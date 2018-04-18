@@ -8,6 +8,7 @@ public class MainWindow extends JFrame{
 
 	public MainWindow() {
 
+		setTitle("GameStore Simulator");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
 		
