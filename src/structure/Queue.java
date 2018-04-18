@@ -86,23 +86,4 @@ public class Queue <T>{
 		return reference;
 	}
 	
-//	public void priorityQueue(Node<T> node) {
-//		System.out.println("agregaaaaaaa");
-//		Node<T> current = head;
-//		if(head != null) {
-////			comparator.compare(node.getInformation(), current.getInformation());
-////			if(Integer.parseInt(node.getInformation().toString()) > priorityMax) {
-//			if(comparator.compare(node.getInformation(), current.getInformation()) > 0) {
-//				node.setNext(head);
-//				head = node;
-//			}else {
-//				while (comparator.compare(node.getInformation(), current.getInformation()) < 0) {
-//					current = current.getNext();
-//				}
-//				strainBefore(current.getInformation(), node);
-//			}
-//		}else {
-//			head = node;
-//		}
-//	}
 }
