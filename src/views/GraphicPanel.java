@@ -2,11 +2,6 @@ package views;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import models.Customer;
@@ -17,7 +12,6 @@ public class GraphicPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
-	private Customer customer;
 	private Queue<Customer> listCustomers;
 	
 	public GraphicPanel() {
@@ -41,7 +35,6 @@ public class GraphicPanel extends JPanel{
 		g.setColor(Color.RED);
 		g.fillRect(250, 0, 50, 550);
 		g.fillRect(0, 500, 250, 50);
-		
 	}
 	
 	public void paintHumans(Graphics g, Node<Customer> current){

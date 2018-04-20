@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import dao.CustomerQueue;
 import models.Customer;
 import structure.Queue;
 import views.MainWindow;
