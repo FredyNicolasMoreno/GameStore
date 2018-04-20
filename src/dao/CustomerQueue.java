@@ -15,5 +15,6 @@ public class CustomerQueue {
 	public void addCustomer(Customer customer) {
 		customers.enqueue(customer);
 	}
+	
 		
 }
