@@ -2,7 +2,11 @@ package views;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import models.Customer;
@@ -23,24 +27,25 @@ public class GraphicPanel extends JPanel{
 	
 	@Override
 	public void paint(Graphics g) {
-		int x = 0;
-		int y = 50;
+		super.paint(g);
 		if(listCustomers != null){
 			Node<Customer> current = listCustomers.getHead();
 			while (current!=null) {
 //				g.setColor(Color.BLACK);
-				g.fillOval(x, y, 60, 60);
+//				g.drawImage(new ImageIcon("/src/img/silhouette").getImage(), current.getInformation().getX(), current.getInformation().getY(), 60, 60, this);
+				paintHumans(g, current);
 //				g.setColor(Color.decode("#FFFF0D"));
-				g.fillOval(x+10, y+10, 40, 40);
 				current = current.getNext();
-				x += 70;
 			}
 		}
+		g.setColor(Color.RED);
+		g.fillRect(250, 0, 50, 550);
+		g.fillRect(0, 500, 250, 50);
 		
 	}
 	
-	public void paintHumans(Graphics g, int x, int y){
-		
+	public void paintHumans(Graphics g, Node<Customer> current){
+		g.fillOval(current.getInformation().getX(), current.getInformation().getY(), 60, 60);
 	}
 	
 	public void setList(Queue<Customer> list){
