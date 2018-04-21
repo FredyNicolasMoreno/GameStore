@@ -16,7 +16,6 @@ public class GraphicPanel extends JPanel{
 	
 	public GraphicPanel() {
 		setBackground(Color.WHITE);
-		listCustomers = new Queue<Customer>();
 	}
 	
 	@Override
@@ -43,5 +42,16 @@ public class GraphicPanel extends JPanel{
 	
 	public void setList(Queue<Customer> list){
 		this.listCustomers = list;
+	}
+	
+	public void move() {
+		Node<Customer> head = listCustomers.getHead();
+		while(head != null) {
+			if(head.getInformation().getX() < getWidth()) {
+				head.getInformation().setX(getX()+30);
+			}
+			head = head.getNext();
+			repaint();
+		}
 	}
 }

@@ -65,4 +65,8 @@ public class MainWindow extends JFrame{
 		g.repaint();
 	}
 	
+	public void move() {
+		g.move();
+	}
+	
 }
