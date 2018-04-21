@@ -5,14 +5,19 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import models.Customer;
+import models.Game;
 import structure.Node;
 import structure.Queue;
+import structure.SimpleList;
 
 public class GraphicPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
-	private Queue<Customer> listCustomers;
+	private Queue<Customer> customersQueue;
+	private SimpleList<Game> listGames;
+	
+	
 	
 	public GraphicPanel() {
 		setBackground(Color.WHITE);
@@ -21,14 +26,22 @@ public class GraphicPanel extends JPanel{
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		if(listCustomers != null){
-			Node<Customer> current = listCustomers.getHead();
-			while (current!=null) {
+		if(customersQueue != null){
+			Node<Customer> currentCustomer = customersQueue.getHead();
+			while (currentCustomer!=null) {
 //				g.setColor(Color.BLACK);
 //				g.drawImage(new ImageIcon("/src/img/silhouette").getImage(), current.getInformation().getX(), current.getInformation().getY(), 60, 60, this);
-				paintHumans(g, current);
+				paintHumans(g, currentCustomer);
 //				g.setColor(Color.decode("#FFFF0D"));
-				current = current.getNext();
+				currentCustomer = currentCustomer.getNext();
+			}
+		}
+		if(listGames != null) {
+			System.out.println(listGames.getHead().getInformation().getId());
+			Node<Game> currentGame = listGames.getHead();
+			while (currentGame!=null) {
+				paintGames(g, currentGame);
+				currentGame = currentGame.getNext();
 			}
 		}
 		g.setColor(Color.RED);
@@ -40,16 +53,20 @@ public class GraphicPanel extends JPanel{
 		g.fillOval(current.getInformation().getX(), current.getInformation().getY(), 60, 60);
 	}
 	
+	public void paintGames(Graphics g, Node<Game> current) {
+		g.fillRect(current.getInformation().getX(), current.getInformation().getY(), 20, 15);
+	}
+	
 	public void setList(Queue<Customer> list){
-		this.listCustomers = list;
+		this.customersQueue = list;
 	}
 	
 	public void move() {
-		Node<Customer> head = listCustomers.getHead();
+		Node<Customer> head = customersQueue.getHead();
+		int x = customersQueue.getHead().getInformation().getX();
 		while(head != null) {
-			if(head.getInformation().getX() < getWidth()) {
-				head.getInformation().setX(getX()+30);
-			}
+			head.getInformation().setX(x+=30);
+			System.out.println(head.getInformation().getX());
 			head = head.getNext();
 			repaint();
 		}

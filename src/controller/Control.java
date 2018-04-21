@@ -6,17 +6,21 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import models.Customer;
+import models.Game;
 import structure.Queue;
+import structure.SimpleList;
 import views.MainWindow;
 
 public class Control implements ActionListener{
 
 	private Queue<Customer> customers;
+	private SimpleList<Game> games;
 	private MainWindow window;
 	
 	
 	public Control() {
 		customers = new Queue<Customer>();
+		games = new SimpleList<Game>();
 		window = new MainWindow(this);
 	}
 
@@ -49,25 +53,22 @@ public class Control implements ActionListener{
 	
 	public void startSimulation(){
 		fillCustomerRow();
+		fillGameStack();
+	}
+	
+	public void fillGameStack() {
+		for (int i = 0; i < 10; i++) {
+			games.add(new Game(i, "Game", "console", 0, 300));
+		}
+		
 	}
 	
 	public void fillCustomerRow(){
-		Customer client = new Customer(0, "Juan", 21,0,50);
-//		Customer client1 = new Customer(1, "Carlos", 21,X_VALUE+=70,50);
-//		Customer client2 = new Customer(2, "Manuel", 21,X_VALUE+=70,50);
-//		Customer client3 = new Customer(3, "Segio", 21,X_VALUE+=70,50);
-//		Customer client4 = new Customer(4, "Sofia", 21,X_VALUE+=70,50);
-//		Customer client5 = new Customer(5, "Dario", 21,X_VALUE+=70,50);
-//		Customer client6 = new Customer(6, "Andres", 21,X_VALUE+=70,50);
-//		Customer client7 = new Customer(7, "Alejandro", 21,X_VALUE+=70,50);
-		customers.enqueue(client);
-//		customers.enqueue(client1);
-//		customers.enqueue(client2);
-//		customers.enqueue(client3);
-//		customers.enqueue(client4);
-//		customers.enqueue(client5);
-//		customers.enqueue(client6);
-//		customers.enqueue(client7);
+		
+		for (int i = 0; i < 10; i++) {
+			customers.enqueue(new Customer(i, "Juan", 21,0,50));
+		}
+		
 	}
 	
 }

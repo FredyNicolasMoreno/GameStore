@@ -61,7 +61,6 @@ public class MainWindow extends JFrame{
 	
 	public void setList(Queue<Customer> list){
 		g.setList(list);
-		g.revalidate();
 		g.repaint();
 	}
 	
