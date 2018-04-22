@@ -54,7 +54,7 @@ public class Control implements ActionListener{
 	}
 	
 	public void fillCustomerRow(int quantity){
-		int x = 300;
+		int x = 250;
 		for (int i = 0; i < quantity; i++) {
 			customers.enqueue(new Customer(i, "Juan", 21,x+=70,50));
 		}

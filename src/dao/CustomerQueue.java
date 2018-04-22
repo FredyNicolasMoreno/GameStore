@@ -16,5 +16,8 @@ public class CustomerQueue {
 		customers.enqueue(customer);
 	}
 	
-		
+	public void deleteCustomer() {
+		customers.dequeue();
+	}
+	
 }
