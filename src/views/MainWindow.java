@@ -12,7 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JSpinner;
 
 import models.Customer;
+import models.Game;
 import structure.Queue;
+import structure.SimpleList;
 import controller.Actions;
 import controller.Control;
 
@@ -22,6 +24,7 @@ public class MainWindow extends JFrame{
 
 	private GridSystem grid;
 	private GraphicPanel g;
+	private JSpinner spinnerGames, spinnerCustomers;
 	
 	public MainWindow(Control control) {
 
@@ -39,13 +42,13 @@ public class MainWindow extends JFrame{
 		JLabel games = new JLabel("Games");
 		add(games, grid.insertComponent(9, 0, 1, 0));
 		
-		JSpinner spinnerGames = new JSpinner();
+		spinnerGames = new JSpinner();
 		add(spinnerGames, grid.insertComponent(10, 0, 1, 0));
 		
 		JLabel customers = new JLabel("Customers");
 		add(customers, grid.insertComponent(11, 0, 1, 0));
 		
-		JSpinner spinnerCustomers = new JSpinner();
+		spinnerCustomers = new JSpinner();
 		add(spinnerCustomers, grid.insertComponent(12, 0, 1, 0));
 		
 		JButton start = new JButton("Start");
@@ -58,14 +61,23 @@ public class MainWindow extends JFrame{
 		
 		setVisible(true);
 	}
-	
+
 	public void setList(Queue<Customer> list){
 		g.setList(list);
 		g.repaint();
 	}
 	
-	public void move() {
-		g.move();
+	public void setGameList(SimpleList<Game> games) {
+		g.setGamesList(games);
+		g.repaint();
+	}
+	
+	public int getCustomersAmount() {
+		return (int)spinnerCustomers.getValue();
+	}
+	
+	public int getGamesAmount() {
+		return (int)spinnerGames.getValue();
 	}
 	
 }

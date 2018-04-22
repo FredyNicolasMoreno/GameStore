@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Timer;
 
 import models.Customer;
 import models.Game;
@@ -31,7 +30,7 @@ public class Control implements ActionListener{
 		case START:
 			startSimulation();
 			window.setList(customers);
-			move();
+			window.setGameList(games);
 			break;
 
 		default:
@@ -40,35 +39,25 @@ public class Control implements ActionListener{
 		
 	}
 	
-	public void move() {
-		Timer timer = new Timer(1000, new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				window.move();
-			}
-		});
-		timer.start();
-	}
 	
 	public void startSimulation(){
-		fillCustomerRow();
-		fillGameStack();
+		fillCustomerRow(window.getCustomersAmount());
+		fillGameStack(window.getGamesAmount());
 	}
 	
-	public void fillGameStack() {
-		for (int i = 0; i < 10; i++) {
+	public void fillGameStack(int quantity) {
+		for (int i = 1; i == quantity; i++) {
 			games.add(new Game(i, "Game", "console", 0, 300));
 		}
 		
 	}
 	
-	public void fillCustomerRow(){
-		
-		for (int i = 0; i < 10; i++) {
-			customers.enqueue(new Customer(i, "Juan", 21,0,50));
+	public void fillCustomerRow(int quantity){
+		int x = 0;
+		for (int i = 1; i == quantity; i++) {
+			customers.enqueue(new Customer(i, "Juan", 21,x,50));
+			x++;
 		}
-		
 	}
 	
 }

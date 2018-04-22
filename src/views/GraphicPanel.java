@@ -37,12 +37,13 @@ public class GraphicPanel extends JPanel{
 			}
 		}
 		if(listGames != null) {
-			System.out.println(listGames.getHead().getInformation().getId());
 			Node<Game> currentGame = listGames.getHead();
 			while (currentGame!=null) {
 				paintGames(g, currentGame);
 				currentGame = currentGame.getNext();
 			}
+		}else{
+//			System.out.println("Nula");
 		}
 		g.setColor(Color.RED);
 		g.fillRect(250, 0, 50, 550);
@@ -61,14 +62,8 @@ public class GraphicPanel extends JPanel{
 		this.customersQueue = list;
 	}
 	
-	public void move() {
-		Node<Customer> head = customersQueue.getHead();
-		int x = customersQueue.getHead().getInformation().getX();
-		while(head != null) {
-			head.getInformation().setX(x+=30);
-			System.out.println(head.getInformation().getX());
-			head = head.getNext();
-			repaint();
-		}
+	public void setGamesList(SimpleList<Game> games) {
+		this.listGames = games;
 	}
+	
 }
