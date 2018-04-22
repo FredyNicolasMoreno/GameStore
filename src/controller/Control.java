@@ -3,7 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+import dao.GameList;
 import models.Customer;
 import models.Game;
 import structure.Queue;
@@ -14,11 +14,13 @@ public class Control implements ActionListener{
 
 	private Queue<Customer> customers;
 	private SimpleList<Game> games;
+	private GameList gameList;
 	private MainWindow window;
 	
 	
 	public Control() {
 		customers = new Queue<Customer>();
+		gameList = new GameList();
 		games = new SimpleList<Game>();
 		window = new MainWindow(this);
 	}
@@ -48,7 +50,7 @@ public class Control implements ActionListener{
 	public void fillGameStack(int quantity) {
 		int y = 150;
 		for (int i = 0; i < quantity; i++) {
-			games.add(new Game(i, "Game", "console", 0, y+=20));
+			games.add(new Game(i, "Game", randomConsole(), 0, y+=20));
 		}
 		
 	}
@@ -58,6 +60,10 @@ public class Control implements ActionListener{
 		for (int i = 0; i < quantity; i++) {
 			customers.enqueue(new Customer(i, "Juan", 21,x+=70,50));
 		}
+	}
+	
+	public String randomConsole() {
+		return gameList.randomConsole();
 	}
 	
 }

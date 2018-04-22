@@ -19,4 +19,10 @@ public class GameList {
 	public void deleteGame(Game game){
 		games.delete(game);
 	}
+	
+	public String randomConsole() {
+		int n = (int) (Math.random()*3);
+		String[] consoles = {"PC","Xbox","PlayStation"};
+		return consoles[n];
+	}
 }

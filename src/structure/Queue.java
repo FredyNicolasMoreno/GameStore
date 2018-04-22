@@ -79,16 +79,11 @@ public class Queue <T>{
 		return head;
 	}
 
-	public Node<T> dequeue() throws Exception{
-		
-		if(head != null) {
-			Node<T> reference = head;
-			head = reference.getNext();
-			reference.setNext(null);
-			return reference;
-		}else {
-			throw new Exception("No hay mas elementos en la cola");
-		}
+	public Node<T> dequeue() {
+		Node<T> reference = head;
+		head = reference.getNext();
+		reference.setNext(null);
+		return reference;
 	}
 	
 }
