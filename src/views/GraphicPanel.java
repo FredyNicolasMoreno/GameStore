@@ -42,19 +42,20 @@ public class GraphicPanel extends JPanel{
 				paintGames(g, currentGame);
 				currentGame = currentGame.getNext();
 			}
-		}else{
-//			System.out.println("Nula");
 		}
+		
 		g.setColor(Color.RED);
 		g.fillRect(250, 0, 50, 550);
 		g.fillRect(0, 500, 250, 50);
 	}
 	
 	public void paintHumans(Graphics g, Node<Customer> current){
+		g.setColor(Color.RED);
 		g.fillOval(current.getInformation().getX(), current.getInformation().getY(), 60, 60);
 	}
 	
 	public void paintGames(Graphics g, Node<Game> current) {
+		g.setColor(Color.green);
 		g.fillRect(current.getInformation().getX(), current.getInformation().getY(), 20, 15);
 	}
 	

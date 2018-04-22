@@ -46,17 +46,17 @@ public class Control implements ActionListener{
 	}
 	
 	public void fillGameStack(int quantity) {
-		for (int i = 1; i == quantity; i++) {
-			games.add(new Game(i, "Game", "console", 0, 300));
+		int y = 150;
+		for (int i = 0; i < quantity; i++) {
+			games.add(new Game(i, "Game", "console", 0, y+=20));
 		}
 		
 	}
 	
 	public void fillCustomerRow(int quantity){
-		int x = 0;
-		for (int i = 1; i == quantity; i++) {
-			customers.enqueue(new Customer(i, "Juan", 21,x,50));
-			x++;
+		int x = 300;
+		for (int i = 0; i < quantity; i++) {
+			customers.enqueue(new Customer(i, "Juan", 21,x+=70,50));
 		}
 	}
 	

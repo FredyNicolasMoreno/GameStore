@@ -4,6 +4,7 @@ package views;
 
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,6 +33,7 @@ public class MainWindow extends JFrame{
 		grid.addExternalBorder(10, 10, 10, 10);
 		
 		setTitle("GameStore Simulator");
+		setMinimumSize(new Dimension(800, 400));
 		setIconImage(new ImageIcon("src/img/icon.png").getImage());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
