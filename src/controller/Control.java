@@ -4,8 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import dao.GameList;
+import dao.Store;
 import models.Customer;
 import models.Game;
+import structure.Node;
 import structure.Queue;
 import structure.SimpleList;
 import views.MainWindow;
@@ -15,6 +17,7 @@ public class Control implements ActionListener{
 	private Queue<Customer> customers;
 	private SimpleList<Game> games;
 	private GameList gameList;
+	private Store store;
 	private MainWindow window;
 	
 	
@@ -22,6 +25,7 @@ public class Control implements ActionListener{
 		customers = new Queue<Customer>();
 		gameList = new GameList();
 		games = new SimpleList<Game>();
+		store = new Store();
 		window = new MainWindow(this);
 	}
 
@@ -30,9 +34,9 @@ public class Control implements ActionListener{
 		
 		switch (Actions.valueOf(e.getActionCommand())) {
 		case START:
-			startSimulation();
 			window.setList(customers);
 			window.setGameList(games);
+			startSimulation();
 			break;
 
 		default:
@@ -45,8 +49,18 @@ public class Control implements ActionListener{
 	public void startSimulation(){
 		fillCustomerRow(window.getCustomersAmount());
 		fillGameStack(window.getGamesAmount());
+		attendClient();
 	}
 	
+	private void attendClient() {
+		System.out.println("--------------");
+		Node<Customer> current = customers.getHead();
+		while(current!=null) {
+			store.attendCustomer(current);
+			current = current.getNext();
+		}
+	}
+
 	public void fillGameStack(int quantity) {
 		int y = 50;
 		for (int i = 0; i < quantity; i++) {
@@ -54,7 +68,6 @@ public class Control implements ActionListener{
 		}
 		if(games==null) {
 			fillGameStack(quantity);
-			
 		}
 		
 	}
