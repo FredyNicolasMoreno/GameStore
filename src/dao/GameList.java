@@ -25,4 +25,8 @@ public class GameList {
 		String[] consoles = {"PC","Xbox","PlayStation"};
 		return consoles[n];
 	}
+	
+	public int randomPrice() {
+		return (int)((Math.random()*240000)+90000);
+	}
 }

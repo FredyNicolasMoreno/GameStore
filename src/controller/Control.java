@@ -48,10 +48,22 @@ public class Control implements ActionListener{
 	}
 	
 	public void fillGameStack(int quantity) {
-		int y = 150;
+		int y = 50;
 		for (int i = 0; i < quantity; i++) {
-			games.add(new Game(i, "Game", randomConsole(), 0, y+=20));
+			games.add(new Game(i, "Game", randomConsole(), randomPrice(), 0, y+=20));
 		}
+		if(games==null) {
+			fillGameStack(quantity);
+			
+		}
+		
+	}
+	
+	private int randomPrice() {
+		return gameList.randomPrice();
+	}
+
+	public void reFillGames() {
 		
 	}
 	
@@ -62,7 +74,7 @@ public class Control implements ActionListener{
 		}
 	}
 	
-	public String randomConsole() {
+	private String randomConsole() {
 		return gameList.randomConsole();
 	}
 	

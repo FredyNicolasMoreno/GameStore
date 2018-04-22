@@ -29,10 +29,7 @@ public class GraphicPanel extends JPanel{
 		if(customersQueue != null){
 			Node<Customer> currentCustomer = customersQueue.getHead();
 			while (currentCustomer!=null) {
-//				g.setColor(Color.BLACK);
-//				g.drawImage(new ImageIcon("/src/img/silhouette").getImage(), current.getInformation().getX(), current.getInformation().getY(), 60, 60, this);
 				paintHumans(g, currentCustomer);
-//				g.setColor(Color.decode("#FFFF0D"));
 				currentCustomer = currentCustomer.getNext();
 			}
 		}
@@ -46,16 +43,21 @@ public class GraphicPanel extends JPanel{
 		
 		g.setColor(Color.RED);
 		g.fillRect(250, 0, 50, 550);
-		g.fillRect(0, 500, 250, 50);
 	}
 	
 	public void paintHumans(Graphics g, Node<Customer> current){
-		g.setColor(Color.RED);
+		g.setColor(Color.decode("#E89375"));
 		g.fillOval(current.getInformation().getX(), current.getInformation().getY(), 60, 60);
 	}
 	
 	public void paintGames(Graphics g, Node<Game> current) {
-		g.setColor(Color.green);
+		if(current.getInformation().getConsole().equals("PC")) {
+			g.setColor(Color.GRAY);
+		}else if(current.getInformation().getConsole().equals("Xbox")){
+			g.setColor(Color.GREEN);
+		}else {
+			g.setColor(Color.BLUE);
+		}
 		g.fillRect(current.getInformation().getX(), current.getInformation().getY(), 20, 15);
 	}
 	
