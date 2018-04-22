@@ -61,6 +61,14 @@ public class MainWindow extends JFrame{
 		start.setForeground(Color.decode("#CC3908"));
 		add(start, grid.insertComponent(12, 1, 1, 0));
 		
+		JButton stop = new JButton("Stop");
+		stop.addActionListener(control);
+		stop.setActionCommand(Actions.START.toString());
+		stop.setBorderPainted(false);
+		stop.setBackground(Color.decode("#5CCC01"));
+		stop.setForeground(Color.decode("#CC3908"));
+		add(stop, grid.insertComponent(11, 1, 1, 0));
+		
 		setVisible(true);
 	}
 
@@ -75,11 +83,16 @@ public class MainWindow extends JFrame{
 	}
 	
 	public int getCustomersAmount() {
-		return (int)spinnerCustomers.getValue();
+			return (int)spinnerCustomers.getValue();
 	}
 	
 	public int getGamesAmount() {
 		return (int)spinnerGames.getValue();
+	}
+	
+	public void errorDialog(String message) {
+		ErrorDialog error = new ErrorDialog(message);
+		error.setVisible(true);
 	}
 	
 }

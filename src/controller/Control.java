@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Timer;
+
 import dao.GameList;
 import dao.Store;
 import models.Customer;
@@ -16,6 +18,7 @@ public class Control implements ActionListener{
 
 	private Queue<Customer> customers;
 	private SimpleList<Game> games;
+	private Timer attend;
 	private GameList gameList;
 	private Store store;
 	private MainWindow window;
@@ -36,7 +39,12 @@ public class Control implements ActionListener{
 		case START:
 			window.setList(customers);
 			window.setGameList(games);
+			store.setList(games);
+			store.setCustomersList(customers);
 			startSimulation();
+			break;
+		case STOP:
+			attend.stop();
 			break;
 
 		default:
@@ -47,18 +55,35 @@ public class Control implements ActionListener{
 	
 	
 	public void startSimulation(){
+		if(window.getCustomersAmount()==0) {
+			window.errorDialog("Necesita tener por lo menos un cliente");
+		}else if(window.getGamesAmount()==0) {
+			window.errorDialog("Necesita tener por lo menos un juego");
+		}
 		fillCustomerRow(window.getCustomersAmount());
 		fillGameStack(window.getGamesAmount());
 		attendClient();
 	}
 	
 	private void attendClient() {
-		System.out.println("--------------");
+		attend = new Timer(2000, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				attend();
+			}
+		});
+		attend.start();
+	}
+	
+	public void attend() {
 		Node<Customer> current = customers.getHead();
 		while(current!=null) {
 			store.attendCustomer(current);
 			current = current.getNext();
 		}
+		window.setGameList(games);
+		window.setList(customers);
 	}
 
 	public void fillGameStack(int quantity) {
