@@ -16,7 +16,7 @@ public class CustomerQueue {
 		customers.enqueue(customer);
 	}
 	
-	public void deleteCustomer() {
+	public void deleteCustomer() throws Exception {
 		customers.dequeue();
 	}
 	
