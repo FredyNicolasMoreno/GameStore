@@ -43,8 +43,5 @@ public class Sale {
 		return new String[] {game.getName(),"$ "+String.valueOf(game.getPrice())};
 	}
 	
-	public String[] getBestConsole() {
-		return new String[] {game.getConsole(), String.valueOf(store.sortByConsole())};
-	}
 	
 }

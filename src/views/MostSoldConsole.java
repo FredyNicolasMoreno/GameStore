@@ -11,9 +11,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controller.Control;
-import models.Sale;
-import structure.Node;
-import structure.SimpleList;
 
 public class MostSoldConsole extends JDialog{
 	
@@ -45,13 +42,11 @@ public class MostSoldConsole extends JDialog{
 		add(scroll, BorderLayout.CENTER);
 	}
 
-	public void refreshTable(SimpleList<Sale> saleList) {
+	public void refreshTable(String[] pc,String[] xb,String[] ps) {
 		model.setRowCount(0);
-		Node<Sale> sale = saleList.getHead();
-		while (sale != null) {
-			model.addRow(sale.getInformation().getGameVector());
-			sale = sale.getNext();
-		}
+		model.addRow(pc);
+		model.addRow(xb);
+		model.addRow(ps);
 		table.setModel(model);
 	}
 

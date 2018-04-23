@@ -12,7 +12,6 @@ import models.Customer;
 import models.Game;
 import structure.Node;
 import structure.Queue;
-import structure.SimpleList;
 import views.GamesTable;
 import views.MainWindow;
 import views.MostExpensiveTable;
@@ -73,7 +72,7 @@ public class Control implements ActionListener{
 	
 	
 	private void bestSeller() {
-		mvTable.refreshTable(store.salesList());
+		mvTable.refreshTable(gameList.manyPC(),gameList.manyXbox(),gameList.manyPs());
 		mvTable.setVisible(true);
 	}
 

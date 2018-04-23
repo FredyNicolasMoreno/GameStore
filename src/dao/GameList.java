@@ -67,7 +67,40 @@ public class GameList {
 		return games;
 	}
 	
+	public String[] manyPC() {
+		Node<Game> head = games.getHead();
+		int value = 0;
+		while(head != null){
+			if(head.getInformation().getConsole().equals("Pc")) {
+				value++;
+			}
+			head = head.getNext();
+		}
+		return new String[] {"Pc",String.valueOf(value)};
+	}
+
+	public String[] manyXbox() {
+		Node<Game> head = games.getHead();
+		int value = 0;
+		while(head != null){
+			if(head.getInformation().getConsole().equals("Xbox")) {
+				value++;
+			}
+			head = head.getNext();
+		}
+		return new String[] {"Xbox",String.valueOf(value)};
+	}
 	
-	
+	public String[] manyPs() {
+		Node<Game> head = games.getHead();
+		int value = 0;
+		while(head != null){
+			if(head.getInformation().getConsole().equals("PlayStation")) {
+				value++;
+			}
+			head = head.getNext();
+		}
+		return new String[] {"PlayStation",String.valueOf(value)};
+	}
 	
 }
