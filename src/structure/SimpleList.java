@@ -61,7 +61,7 @@ public class SimpleList<T> {
 	public void print() {
 		Node<T> current = head;
 		while (current != null) {
-			System.out.println(current.getInformation());
+			System.out.println(current.getInformation().toString());
 			current = current.getNext();
 		}
 	}

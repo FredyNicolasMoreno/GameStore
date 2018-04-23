@@ -54,5 +54,8 @@ public class Store {
 	public void setCustomersList(Queue<Customer> customerList) {
 		this.customers = customerList;
 	}
-	
+
+	public SimpleList<Sale> salesList(){
+		return sales;
+	}
 }

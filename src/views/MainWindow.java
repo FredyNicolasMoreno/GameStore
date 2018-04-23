@@ -59,15 +59,23 @@ public class MainWindow extends JFrame{
 		start.setBorderPainted(false);
 		start.setBackground(Color.decode("#5CCC01"));
 		start.setForeground(Color.decode("#CC3908"));
-		add(start, grid.insertComponent(12, 1, 1, 0));
+		add(start, grid.insertComponent(10, 1, 1, 0));
 		
 		JButton stop = new JButton("Stop");
 		stop.addActionListener(control);
-		stop.setActionCommand(Actions.START.toString());
+		stop.setActionCommand(Actions.STOP.toString());
 		stop.setBorderPainted(false);
 		stop.setBackground(Color.decode("#5CCC01"));
 		stop.setForeground(Color.decode("#CC3908"));
 		add(stop, grid.insertComponent(11, 1, 1, 0));
+		
+		JButton gamesReport = new JButton("Reporte de Ventas");
+		gamesReport.addActionListener(control);
+		gamesReport.setActionCommand(Actions.GAMES_REPORT.toString());
+		gamesReport.setBorderPainted(false);
+		gamesReport.setBackground(Color.decode("#5CCC01"));
+		gamesReport.setForeground(Color.decode("#CC3908"));
+		add(gamesReport, grid.insertComponent(10, 2, 1, 0));
 		
 		setVisible(true);
 	}

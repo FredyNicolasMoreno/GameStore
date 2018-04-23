@@ -32,4 +32,8 @@ public class Sale {
 		this.game = game;
 	}
 	
+	public String[] getObjectVector() {
+		return new String[] {customer.getName(),game.getName()};
+	}
+	
 }

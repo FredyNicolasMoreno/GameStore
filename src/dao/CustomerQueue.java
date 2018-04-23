@@ -20,4 +20,12 @@ public class CustomerQueue {
 		customers.dequeue();
 	}
 	
+	public String randomName() {
+		
+		int n = (int) (Math.random()*20)+1; 
+		String[] names = {"","Babara","Natalie","Jolynn","Alejandro","Nicholas","Cedric","Lana","Sasha","Charlotte","Seth",
+				"Matt","Jeff","Natalya","Becky","Alexa","Bray","Roman","Dean","Sofia","Angie"};
+		return names[n];
+	}
+	
 }

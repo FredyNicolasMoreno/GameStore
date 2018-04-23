@@ -29,4 +29,13 @@ public class GameList {
 	public int randomPrice() {
 		return (int)((Math.random()*240000)+90000);
 	}
+	
+	public String randomGameName() {
+		
+		int n = (int) (Math.random()*10)+1; 
+		String[] names = {"","NieR: Automata","PLAYERUNKNOWN'S BATTLEGROUNDS","Far Cry® 5","Dying Light Enhanced Edition","BATTLETECH",
+				"Rocket League®","The Elder Scrolls V: Skyrim Special Edition","Rise of the Tomb Rider","PC Building Simulator","Counter-Strike: Global Offensive"};
+		return names[n];
+		
+	}
 }
