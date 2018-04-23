@@ -15,21 +15,21 @@ import models.Sale;
 import structure.Node;
 import structure.SimpleList;
 
-public class GamesTable extends JDialog{
+public class MostSoldConsole extends JDialog{
 	
 	private static final long serialVersionUID = 1L;
 	private DefaultTableModel model;
 	private JTable table;
 	private JScrollPane scroll;
 
-	public GamesTable(Control controller) {
+	public MostSoldConsole(Control controller) {
 		setLayout(new BorderLayout());
 
 		setTitle("Runner Soft");
 		setIconImage(new ImageIcon(getClass().getResource("/img/icon.png")).getImage());
 		setSize(800,500);
 		model = new DefaultTableModel();
-		model.setColumnIdentifiers(new String[] {"Cliente","Juego"});
+		model.setColumnIdentifiers(new String[] {"Consola","Vendidos"});
 
 		table = new JTable(model);
 		table.setRowHeight(25);
@@ -49,7 +49,7 @@ public class GamesTable extends JDialog{
 		model.setRowCount(0);
 		Node<Sale> sale = saleList.getHead();
 		while (sale != null) {
-			model.addRow(sale.getInformation().getSaleVector());
+			model.addRow(sale.getInformation().getGameVector());
 			sale = sale.getNext();
 		}
 		table.setModel(model);

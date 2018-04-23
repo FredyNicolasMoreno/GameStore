@@ -1,9 +1,12 @@
 package models;
 
+import dao.Store;
+
 public class Sale {
 
 	private Customer customer;
 	private Game game;
+	private Store store;
 	
 	public Sale(Customer customer, Game game) {
 		super();
@@ -32,8 +35,16 @@ public class Sale {
 		this.game = game;
 	}
 	
-	public String[] getObjectVector() {
+	public String[] getSaleVector() {
 		return new String[] {customer.getName(),game.getName()};
+	}
+	
+	public String[] getGameVector() {
+		return new String[] {game.getName(),"$ "+String.valueOf(game.getPrice())};
+	}
+	
+	public String[] getBestConsole() {
+		return new String[] {game.getConsole(), String.valueOf(store.sortByConsole())};
 	}
 	
 }

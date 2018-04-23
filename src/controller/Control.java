@@ -15,6 +15,8 @@ import structure.Queue;
 import structure.SimpleList;
 import views.GamesTable;
 import views.MainWindow;
+import views.MostExpensiveTable;
+import views.MostSoldConsole;
 
 public class Control implements ActionListener{
 
@@ -26,6 +28,8 @@ public class Control implements ActionListener{
 	private Store store;
 	private MainWindow window;
 	private GamesTable gTable;
+	private MostExpensiveTable expTable;
+	private MostSoldConsole mvTable;
 	
 	
 	public Control() {
@@ -36,6 +40,8 @@ public class Control implements ActionListener{
 		store = new Store();
 		window = new MainWindow(this);
 		gTable = new GamesTable(this);
+		expTable = new MostExpensiveTable(this);
+		mvTable = new MostSoldConsole(this);
 	}
 
 	@Override
@@ -55,7 +61,12 @@ public class Control implements ActionListener{
 		case GAMES_REPORT:
 			report();
 			break;
-
+		case EXPENSIVE:
+			mostExpensive();
+			break;
+		case BEST_SELLER:
+			bestSeller();
+			break;
 		default:
 			break;
 		}
@@ -63,6 +74,17 @@ public class Control implements ActionListener{
 	}
 	
 	
+	private void bestSeller() {
+		mvTable.refreshTable(store.salesList());
+		mvTable.setVisible(true);
+	}
+
+	private void mostExpensive() {
+		expTable.refreshTable(store.sortByPrice());
+		expTable.setVisible(true);
+		
+	}
+
 	private void report() {
 		gTable.refreshTable(store.salesList());
 		gTable.setVisible(true);

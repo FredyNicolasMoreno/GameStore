@@ -77,6 +77,22 @@ public class MainWindow extends JFrame{
 		gamesReport.setForeground(Color.decode("#CC3908"));
 		add(gamesReport, grid.insertComponent(10, 2, 1, 0));
 		
+		JButton expensiveReport = new JButton("Juego mas costoso");
+		expensiveReport.addActionListener(control);
+		expensiveReport.setActionCommand(Actions.EXPENSIVE.toString());
+		expensiveReport.setBorderPainted(false);
+		expensiveReport.setBackground(Color.decode("#5CCC01"));
+		expensiveReport.setForeground(Color.decode("#CC3908"));
+		add(expensiveReport, grid.insertComponent(11, 2, 1, 0));
+		
+		JButton bestSellerReport = new JButton("Consola que mas vende");
+		bestSellerReport.addActionListener(control);
+		bestSellerReport.setActionCommand(Actions.BEST_SELLER.toString());
+		bestSellerReport.setBorderPainted(false);
+		bestSellerReport.setBackground(Color.decode("#5CCC01"));
+		bestSellerReport.setForeground(Color.decode("#CC3908"));
+		add(bestSellerReport, grid.insertComponent(10, 3, 1, 0));
+		
 		setVisible(true);
 	}
 

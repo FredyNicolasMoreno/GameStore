@@ -58,4 +58,38 @@ public class Store {
 	public SimpleList<Sale> salesList(){
 		return sales;
 	}
+	
+	public SimpleList<Sale> sortByPrice(){
+		SimpleList<Sale> sortedList = new SimpleList<>();
+		Node<Sale> actual = sales.getHead();
+		Node<Sale> max = sales.getHead();
+		while(actual.getNext()!=null) {
+			if(actual.getInformation().getGame().getPrice()<max.getInformation().getGame().getPrice()) {
+				max = actual;
+			}
+			sortedList.add(max.getInformation());
+			actual = actual.getNext();
+		}
+		return sortedList;
+	}
+	
+	public int[] sortByConsole(){
+		Node<Sale> actual = sales.getHead();
+		int pcCount = 0;
+		int xBoxCount = 0;
+		int pSCount = 0;
+		
+		while(actual.getNext()!=null) {
+			if(actual.getInformation().getGame().getConsole().equals("PC")) {
+				pcCount++;
+			}else if(actual.getInformation().getGame().getConsole().equals("Xbox")) {
+				xBoxCount++;
+			}else if(actual.getInformation().getGame().getConsole().equals("PlayStation")) {
+				pSCount++;
+			}
+			actual = actual.getNext();
+		}
+		int[] sortedList = new int[] {pcCount,xBoxCount,pSCount};
+		return sortedList;
+	}
 }
