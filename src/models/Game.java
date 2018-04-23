@@ -1,5 +1,6 @@
 package models;
 
+
 public class Game {
 
 	private int id, price;
@@ -54,6 +55,10 @@ public class Game {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public String[] toObjectVector() {
+		return new String[] {name, String.valueOf(price)};
 	}
 
 	

@@ -21,7 +21,6 @@ import views.MostSoldConsole;
 public class Control implements ActionListener{
 
 	private Queue<Customer> customers;
-	private SimpleList<Game> games;
 	private CustomerQueue customer;
 	private Timer attend;
 	private GameList gameList;
@@ -36,7 +35,6 @@ public class Control implements ActionListener{
 		customers = new Queue<Customer>();
 		customer = new CustomerQueue();
 		gameList = new GameList();
-		games = new SimpleList<Game>();
 		store = new Store();
 		window = new MainWindow(this);
 		gTable = new GamesTable(this);
@@ -50,9 +48,9 @@ public class Control implements ActionListener{
 		switch (Actions.valueOf(e.getActionCommand())) {
 		case START:
 			store.setCustomersList(customers);
-			store.setList(games);
+			store.setList(gameList.getGames());
 			window.setList(customers);
-			window.setGameList(games);
+			window.setGameList(gameList.getGames());
 			startSimulation();
 			break;
 		case STOP:
@@ -80,7 +78,8 @@ public class Control implements ActionListener{
 	}
 
 	private void mostExpensive() {
-		expTable.refreshTable(store.sortByPrice());
+		gameList.addPriority();
+		expTable.refreshTable(gameList.getPriority());
 		expTable.setVisible(true);
 		
 	}
@@ -118,16 +117,16 @@ public class Control implements ActionListener{
 			store.attendCustomer(current);
 			current = current.getNext();
 		}
-		window.setGameList(games);
+		window.setGameList(gameList.getGames());
 		window.setList(customers);
 	}
 
 	public void fillGameStack(int quantity) {
 		int y = 50;
 		for (int i = 0; i < quantity; i++) {
-			games.add(new Game(i, randomName(), randomConsole(), randomPrice(), 0, y+=20));
+			gameList.addGame(new Game(i, randomName(), randomConsole(), randomPrice(), 0, y+=20));
 		}
-		if(games==null) {
+		if(gameList.getGames()==null) {
 			fillGameStack(quantity);
 		}
 		

@@ -3,6 +3,7 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.PriorityQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -11,9 +12,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controller.Control;
-import models.Sale;
-import structure.Node;
-import structure.SimpleList;
+import models.Game;
 
 public class MostExpensiveTable extends JDialog{
 	
@@ -45,12 +44,10 @@ public class MostExpensiveTable extends JDialog{
 		add(scroll, BorderLayout.CENTER);
 	}
 
-	public void refreshTable(SimpleList<Sale> saleList) {
+	public void refreshTable(PriorityQueue<Game> priorityQueue) {
 		model.setRowCount(0);
-		Node<Sale> sale = saleList.getHead();
-		while (sale != null) {
-			model.addRow(sale.getInformation().getGameVector());
-			sale = sale.getNext();
+		for (Game game : priorityQueue) {
+			model.addRow(game.toObjectVector());
 		}
 		table.setModel(model);
 	}

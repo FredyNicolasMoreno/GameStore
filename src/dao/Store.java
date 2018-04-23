@@ -25,7 +25,6 @@ public class Store {
 			requestNewGame(game);
 		}
 		sales.add(new Sale(customers.dequeue().getInformation(), game));
-//		gameList.delete(game);
 	}
 	
 	public Game getRandomGame() {
@@ -34,10 +33,10 @@ public class Store {
 		if (actual.getInformation().getConsole() != console) {
 			while (actual != null) {
 				if (actual.getInformation().getConsole() != console) {
-					actual = actual.getNext();
 				}else{
 					return actual.getInformation();
 				}
+				actual = actual.getNext();
 			}
 		}
 		return actual.getInformation();
@@ -59,19 +58,7 @@ public class Store {
 		return sales;
 	}
 	
-	public SimpleList<Sale> sortByPrice(){
-		SimpleList<Sale> sortedList = new SimpleList<>();
-		Node<Sale> actual = sales.getHead();
-		Node<Sale> max = sales.getHead();
-		while(actual.getNext()!=null) {
-			if(actual.getInformation().getGame().getPrice()<max.getInformation().getGame().getPrice()) {
-				max = actual;
-			}
-			sortedList.add(max.getInformation());
-			actual = actual.getNext();
-		}
-		return sortedList;
-	}
+	
 	
 	public int[] sortByConsole(){
 		Node<Sale> actual = sales.getHead();

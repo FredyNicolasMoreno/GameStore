@@ -93,6 +93,8 @@ public class MainWindow extends JFrame{
 		bestSellerReport.setForeground(Color.decode("#CC3908"));
 		add(bestSellerReport, grid.insertComponent(10, 3, 1, 0));
 		
+		
+		
 		setVisible(true);
 	}
 

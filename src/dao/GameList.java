@@ -1,14 +1,25 @@
 package dao;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 import models.Game;
+import structure.Node;
 import structure.SimpleList;
 
 public class GameList {
 
 	private SimpleList<Game> games;
+	private PriorityQueue<Game> priority;
 	
 	public GameList() {
-		
+		priority = new PriorityQueue<>(new Comparator<Game>() {
+
+			@Override
+			public int compare(Game o1, Game o2) {
+				return (int) (o2.getPrice() - o1.getPrice());
+			}
+		});
 		games = new SimpleList<>();
 	}
 	
@@ -21,7 +32,7 @@ public class GameList {
 	}
 	
 	public String randomConsole() {
-		int n = (int) (Math.random()*3);
+		int n = (int) (Math.random()*2);
 		String[] consoles = {"PC","Xbox","PlayStation"};
 		return consoles[n];
 	}
@@ -38,4 +49,25 @@ public class GameList {
 		return names[n];
 		
 	}
+	
+	public void addPriority() {
+		Node<Game> head = games.getHead();
+		while(head!=null) {
+			priority.add(head.getInformation());
+			head = head.getNext();
+		}
+		
+	}
+
+	public PriorityQueue<Game> getPriority() {
+		return priority;
+	}
+
+	public SimpleList<Game> getGames() {
+		return games;
+	}
+	
+	
+	
+	
 }

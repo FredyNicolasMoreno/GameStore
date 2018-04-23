@@ -18,7 +18,6 @@ public class GraphicPanel extends JPanel{
 	private SimpleList<Game> listGames;
 	
 	
-	
 	public GraphicPanel() {
 		setBackground(Color.WHITE);
 	}
@@ -40,9 +39,20 @@ public class GraphicPanel extends JPanel{
 				currentGame = currentGame.getNext();
 			}
 		}
+
+		
+		g.setColor(Color.BLACK);
+		g.fillRect(255, 0, 55, 550);
+		
+		g.setColor(Color.RED);
+		g.fillRect(325, 20, 1500, 20);
+		g.fillRect(400, 120, 1500, 20);
 		
 		g.setColor(Color.RED);
 		g.fillRect(250, 0, 50, 550);
+		
+		g.setColor(Color.decode("#E89375"));
+		g.fillOval(150, 150, 60, 60);
 	}
 	
 	public void paintHumans(Graphics g, Node<Customer> current){
@@ -68,5 +78,6 @@ public class GraphicPanel extends JPanel{
 	public void setGamesList(SimpleList<Game> games) {
 		this.listGames = games;
 	}
+	
 	
 }
